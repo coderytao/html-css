@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>鱼C-零基础入门学习Web（Html5+Css3）</title>
+	<link rel="stylesheet" href="/static/css/font-awesome.css">
+    <style>
+	*
+	{
+	margin:0;
+	padding:0;
+	}
+    body{
+	height:100vh;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-image:url(img/5.png);
+	background-repeat:no-repeat;
+	background-size:100% auto;
+	}
+    .smallbox
+	{
+	 width:300px;
+	 height:300px;
+	 border:1px solid black;
+	 background:#00000050;
+	 box-sizing:border-box;
+	 border-radius:10px;
+	 box-shadow:10px 10px 5px #888888;
+	 position:relative;
+	 }
+	 .smallbox h1
+	 {
+	 text-align:center;
+	 color:gray;
+	 }
+	 .item
+	 {
+	height:50px;
+	border-bottom:1px solid white;
+	margin-bottom:35px;/*设置横线与鼠标停留的距离*/
+	
+	 }
+	 .item input{
+	 width:100%;
+	 height:100%;
+	 box-sizing:border-box;
+	 padding-bottom:10px;
+     color:white;	 
+	 }
+	 input,button{
+	  background:transparent;
+	  border:none;
+	  outline:none;
+	 }
+	.item label{
+	 color:white;
+	 font-family:华文隶书;
+	 }
+	.item span{
+	margin-top:30px;
+	text-align:center;
+	}
+	.smallbox button
+	{
+	 width:200px;
+	 position:absolute;
+	 top:200px;
+	 left:55px;
+	 font-size:30px;
+	 font-family:华文隶书;
+	 color:white;
+	 height:50px;
+	 border:solid 1px black;
+	 border-radius:15px;
+	 background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+	 }
+    </style>
+</head>
+<body>
+   <div class="box">
+     <div class="smallbox">
+	   <h1>登录框</h1>
+	     <div class="item">
+		  <label>账号<input type="text" name="xiao"></label>
+		  <i class="fa fa-user" aria-hidden="true"></i>
+		  </div>
+		  <div class="item">
+		  <label>密码<input type="password" name="xiaolan"></label>
+		  </div>
+		  <button>Login</button>
+	   </div>
+   </div>
+ </body>
+</html>

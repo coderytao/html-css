@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>小洪制作官网</title>
+    <style>
+	*{
+	padding:0px;
+	margin:0px;
+	}
+       .header{
+	   width:100%;
+	   height:20px;
+	   border:1px solid black;
+	   background-color:black;
+	   }
+	   .header a{
+	   text-decoration:none;
+	   margin-left:10px;
+	   font-family:华文隶书;
+	   color:white;
+	   padding-left:80px;
+	   }
+	   .content{
+	   width:100%;
+	   height:500px;
+	   border:1px solid red;
+	   background:none;
+	   position:relative;
+	   border:none;
+       background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+	   }
+	   .content .box{
+	   width:60%;
+	   height:200px;
+	   border:1px solid red;
+	   position:absolute;
+	   top:100px;
+	   left:230px;
+	   border:none;
+	   }
+	   .box h1{
+	   text-align:center;
+	   font-family:华文隶书;
+	   line-height:-20px;
+	   font-size:50px;
+	   
+	   }
+	   h1::first-letter{
+	   font-size:60px;
+	   }
+	    p:last-child{
+	   text-align:center;
+	   font-family:华文隶书;
+	   }
+	  #small{
+	  width:300px;
+	  height:50px;
+	  border:1px solid black;
+	  position:absolute;
+	  top:200px;
+	  left:550px;
+	  border-radius:10px;
+	  box-shadow:10px 10px 5px #888888;
+	  }
+	  #small p{
+	   text-align:center;
+	   font-family:华文隶书;
+	   font-size:20px;
+	   line-height:40px;
+	   }
+	  .footer
+	  {
+	  width:100%;
+	  height:100px;
+	  border:1px solid black;
+	  border-bottom-style:#c0c0c0;
+	  border:none;
+	  }
+	  .footer p:first-child{
+	  text-align:center;
+	  font-family:华文隶书;
+	  font-size:40px;}
+	 #last{
+	 width:100%;
+	  height:500px;
+	  border:1px solid #c0c0c0;
+	  display:flex;
+	  flex-direction:row;
+	  flex-wrap:wrap;
+	  }
+	  .smallbox{
+	  width:250px;
+	  height:300px;
+	  margin-left:100px;
+	  margin-top:100px;
+	  border:1px solid #c0c0c0;
+	  }
+	  .smallbox h3,abbr{
+	  text-align:center;
+	  text-decoration:none;
+	  }
+	  .one,.two,.three,.four{
+	  width:240px;
+	  height:100px;
+	  padding:5px;
+	  }
+	  .smallbox p:nth-last-child(2){
+	  text-align:center;
+	  font-family:微软雅黑;
+	  }
+    </style>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+  <div class="header">
+    <a href="#">首页</a>
+	<a href="#">推荐</a>
+	<a href="#">追番</a>
+	<a href="#">抗击肺炎</a>
+	<a href="#">618种草</a>
+	<a href="#">知识区</a>
+	<a href="#">小康</a>
+    </div>
+  <div class="content">
+      <div class="box">
+	   <h1>Bootstrap</h1>
+	   <p>简洁,  直观,  强悍的前端开发框架,让web开发更迅速,简单.</p>
+	     </div>
+		 <div id="small">
+		   <p>Bootstrap3中文字档（v3.3.7)</p>
+		   </div>
+    </div>
+    <div class="footer">
+	 <p>Bootstrap相关优质项目推荐</p><br>
+	  <p>这些项目或者是对Bootstrap进行了有益的补充，或者是基于Bootstrap开发的</p>
+	  </div>
+	<div id="last">
+	  <div class="smallbox">
+	      <img class="one" src="img/14.png">
+		    <abbr title="是前端资源模块化管理和打包工具">
+           <h3>webpack</h3></abbr>
+           <p>是前端资源模块化管理和打包工具。</p>
+           <p>Webpack 是当下最热门的前端资源模块化管理和打包工具.
+		  它可以将许多松散的模块按照依赖和规则打包成符合生产环境部署的前端资源.</p>
+	    </div>
+		<div class="smallbox">
+		<img class="two" src="img/11.png">
+		   <abbr title="用于构建用户界面的javascripe框架"><h3>React</h3></abbr>
+		   <p>用于构建用户界面的 JavaScript框架</p>
+		   <p>React 起源于 Facebook 的内部项目，是一个用于构建用户界面的 JavaScript 库。</p>
+	    </div>
+		<div class="smallbox">
+		    <img class="three" src="img/12.png">
+			<abbr title="typescript中文手册">
+		    <h3>TypeScript</h3></abbr>
+			<p>中文手册</p>
+			<p>TypeScript 是由微软开源的编程语言。它是 JavaScript 的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的面向对象编程。</p>
+	     </div>
+		<div class="smallbox">
+		<img class="four" src="img/13.png">
+		<abbr title="Svelte">
+		<h3>Svelte</h3></abbr>
+		<p>中文网</p>
+	    <p>Svelte 是构建 Web 应用程序的一种新方法。Svelte 是一个编译器，它将声明性组件转换成高效的 JavaScript 代码，并像做外科手术一样细粒度地更新 DOM。</p>
+	    </div>
+		<div class="smallbox">
+		  </div>
+		  <div class="smallbox">
+		  </div>
+		  <div class="smallbox">
+		  </div>
+		  <div class="smallbox">
+		  </div>
+		  <div class="smallbox">
+		  </div>
+		  <div class="smallbox">
+		  </div>
+		  <div class="smallbox">
+		  </div>
+		  <div class="smallbox">
+		  </div>
+	  </div>
+</body>
+</html>

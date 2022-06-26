@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小d商城</title>
+  <meta name="description" content="网上购物商城">
+  <meta name="keywords" content="网上购物,网上商城，家电,手机,电脑,服装">
+ 
+  <style>
+  
+  *{
+  margin:0;
+  padding:0;
+  }
+  body,button,input{
+  font:12px arial;
+  }
+  li{
+  list-style:none;
+  }
+  a{
+  color:#666;
+  text-decoration:none;
+  }
+  input,button{
+  border:none;
+  outline:none;
+  }
+  
+  body{
+  background-color:#f8fafc;
+  }
+  
+  .w{
+  width:1250px;
+  margin:0 auto;
+  }
+  .clearfix{
+  *zoom:1;
+  }
+  .clearfix::after{
+  content:" ";
+  display:block;
+  height:0;
+  clear:both;
+  }
+  .top-nav{
+  background-color:#f5f5f5;
+  padding:10px 0;
+  font-size:15px;
+  }
+  .top-nav .login{
+  float:left;
+  }
+  .top-nav .login .h{
+  color:red;
+  margin-right:10px;
+  }
+  .top-nav .nav-list{
+  float:right;
+  }
+  .top-nav .nav-list li{
+  display:inline-block;
+  margin-left:10px;
+  }
+  .searchWrap .w{
+  position:relative;
+  }
+  .logo{
+  position:absolute;
+  width:300px;
+  left:10px;
+  height:56px;
+  line-height:56px;
+  font-size:40px;
+  color:#e63e3e;
+  font-weight:bold;/*加粗字体*/
+  text-align:center;
+  top:33px;
+  }
+  .search-box{
+  padding:40px 0 40px 300px;
+  }
+  .search-box .searchInput{
+  width:530px;
+  height:40px;
+  line-height:40px;
+  border:1px solid #ddd;
+  padding:0 10px;
+  font-size:15px;
+  float:left;
+  }
+  .search-box .search-btn {
+  width:50px;
+  height:42px;
+  float:left;
+  background-color:#e63e3e;
+  color:#fff;
+  }
+  .search-suggest{
+  position:absolute;
+  display:none;
+  top:82px;
+  background-color:#fff;
+  width:530px;
+  border:1px solid #ddd;
+  }
+  .search-suggest ul li{
+  height:30px;
+  line-height:30px;
+  font-size:15px;
+  padding:0 10px;
+  }
+  
+  /*商品分类*/
+  
+  .memu{
+  background-color:#fff;
+  box-shadow:border-box;
+  }
+  .aside-nav{
+  float:left;
+  width:200px;
+  height:500px;
+  box-shadow: 2px 6px 9px #fff;
+  }
+  .list-item .item-href{
+  display:block;
+  height:50px;
+  line-height:50px;
+  color:#333;
+  border-bottom:1px dotted #ddd;
+  box-sizing:border-box;
+  margin: 0 20px; 
+  }
+  .nav-list{
+  position:relative;
+  }
+  .nav-list .item-menu{
+  display:none;
+  position:absolute;
+  left:200px;
+  width:900px;
+  min-width:500px;
+  background-color:#fff;
+  top:0;
+  z-index:999;
+  box-shadow:2px 2px 9px #fff;
+  }
+  .list-item:hover .item-menu{
+  display:block;/*点击时显示.nav-list .item-menu元素*/
+  }
+  .subcate{
+  float:left;
+  width:610px;
+  padding:30px 20px 20px 20px ;
+  }
+  .subcate .subcate_item{
+  position:relative;
+  padding-left:80px;
+  }
+  .subcate .subcate_item .subcate_title{
+  position:absolute;
+  left:0;
+  width:70px;
+  text-align:right;
+  white-space:nowrap;
+  text-overflow:ellipsis;/*不换行*/
+  overflow:hidden;
+  font-weight:700;
+  }
+  .subcate_title .subcate_title_arrow{
+  margin-top:5px;
+  margin-left:15px;
+  }
+  .subcate .subcate_con .subcate_con_lk{
+  float:ledt;
+  height:16px;
+  line-height:35px;
+  border-left:1px solid #ddd;
+  padding:0 10px;
+  }
+  .subcate .subcate_con{
+  padding:5px;
+  }
+   .subcate .subcate_con .subcate_con_lk:hover{
+   color:#e63625;
+   }
+   .list-item:hover,.list-item:hover .item-href{
+   background:red;
+   color:white;
+   }
+   /*猜你喜欢*/
+   .guessLike{
+   
+   width:250px;
+   font-size:20px;
+   font-weight:5px;
+   box-shadow:10px #fff;
+   display:inline-block;
+   }
+   .guessLike h3{
+   text-align:center;
+   color:red;
+   }  
+   .h{
+   float:left;
+   }
+  .like-item like_lk p{
+  height:24px;
+  line-height:center;
+  font-size:12px;
+  overflow:hidden;
+  white-space:ellipsis;
+  color:red;
+  }
+  .like-item:hover img{
+  opacity:.8;
+  filter:alpha(opacity=80);//透明度
+  }
+  .like-item:hover p{
+  color:red;
+  }
+  /*轮播图*/
+  .banner-wrap {
+  float:left;
+  margin-left:30px;
+  }
+  .banner-wrap .banner{
+  width:970px;
+  height:500px;
+  position:relative;
+  }
+  .banner-wrap .banner ul{
+  display:flex;
+  width:100%;
+  }
+  .banner-wrap .banner li a{
+  display:block;
+  width:970px;
+  height:500px;
+  }
+  .banner-wrap .banner ul li a img{
+  width:100%;
+  height:100%;
+  }
+  .swiper-arrow{
+  position:absolute;
+  top:50%;
+  width:36px;
+  height:36px;
+  line-height:36px;
+  text-align:center;
+  background-color:rgba(0,0,0,.2);
+  color:#fff;
+  margin-top:18px;//让文字居中
+  cursor:pointer;
+  }
+  .prev{
+  left:30px;
+  }
+  .next{
+  right:30px;
+  }
+  .indicators{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  height:14px;
+  background-color:rgba(255,255,255,.3);
+  border-raidus:10px;
+  
+  }
+  .indicators .indicator{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  background-color:#fff;
+  border-radius:50%;
+  cursor:pointer;
+  margin:3px;
+  }
+  .indicators .on{
+  background-color:red;
+  }
+  /*秒杀专区*/
+  
+  .miaosha .miaosha-time{
+  position:relative;
+  float:left;
+  width:200px;
+  height:275px;
+  background-color:red;
+  color:white;
+  }
+  .miaosha-time .ms_tit{
+  text-align:center;
+  font-size:34px;
+  margin-top:30px;
+  }
+  .miaosha-time .ms_desc{
+   position:absolute;
+   width:100%;
+   left:0;
+   bottom:120px;
+   font-size:16px;
+   text-align:center;
+  }
+  .countdown{
+  position:absolute;
+  bottom:50px;
+  
+  }
+   .countdown .cd_item {
+  float:left;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  font-size:20px;
+  font-weight:bold;
+  background-color:black;
+  text-align:center;
+  margin-left:20px;
+  }
+  .miaosha-list{
+  float:left;
+  width:990px;
+  height:275px;
+  margin-left:32px;
+  }
+  .miaosha-list .ms-item{
+  float:left;
+  width:198px;
+  height:275px;
+  margin-left:40px;
+  margin-top:20px;
+  border-radius:10px;
+  background-color:rgba(0,0,0,.1);
+  }
+  .ms-item-lk{
+  display:block;
+  width:100%;
+  height:100%;
+  padding: 0 5px;
+  }
+  .ms-item-lk .ms-item-img{
+  display:block;
+  width:140px;
+  height:140px;
+  padding:20px;
+  margin:auto;
+  }
+  .ms-item-lk:hover .ms-item-img{
+  transform:scale(1.1);
+  transition:transform .5s ease;
+  }
+  .ms-item-lk:hover .ms-item-name{
+  color:black;
+  }
+  .ms-item-lk .ms-item-name{
+  padding:0 20px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  }
+  .ms-item-buy .progress{
+  display:inline-block;
+  width:100px;
+  height:10px;
+  background-color:#ddd;
+  border-radius:5px;
+  margin:5px 5px 0 0;
+  }
+  .ms-item-buy .progress .progress-bar{
+  display:block;
+  width:30%;
+  height:10px;
+  background-color:red;
+  border-radius:5px 0 0 5px;
+  }
+  .ms-item-buy{
+  line-height:20px;
+  margin:10px 0;
+  text-align:center;
+  }
+  .ms-item-buy .buy-num{
+    display:inline-block;
+  color:red;
+  font-size:12px;
+  }
+  .ms-item .ms-item-name{
+  text-align:center;
+  font-weight:10px;
+  color:red;
+  }
+  .ms-item-price{
+  display:block;
+  width:160px;
+   height:20px;
+  margin:auto;
+  border:1px solid red;
+  }
+  .ms-item-price .new-price{
+  float:left;
+  width:80px;
+  height:20px;
+  line-height:20px;
+  text-align:center;
+  background-color:red;
+  }
+   .ms-item-price .origin-price{
+  font-size:10px;
+  color:#999;
+  text-decoration:line-through;
+  line-height:20px;
+  text-align:center;
+  }
+  
+  .layer-inner{
+  background-color:white;
+  }
+  .layer-inner h3{
+  padding:20px 20px;
+  font-size:20px;
+  height:22px;
+  line-height:22px;
+  border-bottom:1px solid red;
+  }
+  </style>
+</head>
+<body>
+<div class="top-nav">
+   <div class="w   clearfix"><!--设置外部边框可以让内容居中-->
+      <div class="login">
+	    <a href="#" class="h">你好，请登录</a>
+		<a href="#">免费注册</a>
+	  </div>
+	  <ul class="nav-list">
+	    <li>
+		<a href="#" class="link">我的订单</a>
+		</li>
+		 <li>
+		<a href="#" class="link">购物信息</a>
+		</li>
+		 <li>
+		<a href="#" class="link">收藏夹</a>
+		</li>
+		 <li>
+		<a href="#" class="link">联系客服</a>
+		</li>
+	  </ul>
+   </div>
+</div>
+<div class="searchWrap"><!--搜索框-->
+   <div class="w">
+       <a href="#" class="logo">小洪商城-小洪</a>
+	   <div class="search-box  clearfix"><!--清除浮动-->
+	      <input class="searchInput" type="text" id="searchInput" placeholder="请输入商品名"><!--搜索框-->
+		  <button class="search-btn">搜索</button>
+		  <div id="search-suggest" class="search-suggest">
+		  <ul>
+		     <li>小米10</li>
+	      </ul>
+		  <ul>
+		     <li>ihone11</li>
+	      </ul>
+		   <ul>
+		     <li>ihone12</li>
+			 
+	      </ul>
+		   <ul>
+		     <li>十三香</li>
+	      </ul>
+	   </div>
+	</div>
+   </div>
+
+<div class="w memu clearfix">
+  <div class="aside-nav">
+    <ul class="nav-list">
+	  <li class="list-item">
+	     <a href="#" class="item-href">美食</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			     
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>
+			 <div class="h">
+			   <div class="guessLike">
+		  <h3></h3>
+		  <ul class="like_list ">
+		    <li class="like-item">
+			  <a href="#" class="like_lk">
+			   
+			  
+			  </a>
+			  </li>		  
+		 </ul>
+		  </div>
+			   <div class="guessLike">
+		  <h3></h3>
+		  <ul class="like_list ">
+		    <li class="like-item">
+			  <a href="#" class="like_lk">
+			   
+			 
+			  </a>
+			  </li>
+			  
+		 </ul>
+		  </div>	  		  
+		  </div>
+		 </div>
+		  
+	  </li>
+	  <li class=" list-item">
+	     <a href="#" class="item-href">家用电器</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>			
+		  </div> 
+	  </li>
+	  <li class=" list-item">
+	     <a href="#" class="item-href">儿童玩具</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>			
+		  </div>
+	  </li>
+	  <li class=" list-item">
+	     <a href="#" class="item-href">羽绒服</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>			
+		  </div>
+	  </li>
+	  <li class=" list-item">
+	     <a href="#" class="item-href">羽毛球拍</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>			
+		  </div>
+	  </li>
+	  <li class=" list-item">
+	     <a href="#" class="item-href">零食美食</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>			
+		  </div>
+	  </li>
+	  <li class=" list-item">
+	     <a href="#" class="item-href">钟表珠宝</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>			
+		  </div>
+	  </li>
+	  <li class=" list-item">
+	     <a href="#" class="item-href">汽车</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>			
+		  </div>
+	  </li>
+	  <li class=" list-item">
+	     <a href="#" class="item-href">电脑办公</a>
+		 <div class="item-menu">
+		   <div class="subcate">
+		     <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			   <dl class="subcate_item">
+			   <dt class="subcate_title">
+			    <a href="#" class="subcate_link">电视><i class="subcate_title_arrow"></i></a>
+			   </dt>
+			  <dd class="subcate_con clearfix">
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			   <a href="#" class="subcate_con_lk">超薄电视</a>
+			    </dd>
+			   </dl>
+			 </div>			
+		  </div>
+	  </li>
+	  
+    </ul>
+  </div>
+  <div class="banner-wrap">
+  <div class="banner">
+	
+     <ul id="swiper">
+	   <li  class="swiper-item">
+	     <a href="#"><img src="1.png" alt="" width="300px" height="400px" ></a>
+		</li>
+			   <li  class="swiper-item" >
+	     <a href="#"><img src="4.png" alt="" width="300px" height="400px"  ></a>
+		</li>
+			   <li  class="swiper-item" >
+	     <a href="#"><img src="3.png" alt="" width="300px" height="400px" ></a>
+		</li>
+	  </ul>
+	  <div class="prev  swiper-arrow"><<</div>
+	  <div class="next  swiper-arrow">>></div>
+	  <div class="indicators">
+	      <div class="on indicator"></div>
+		  <div class="indicator"></div>
+		  <div class="indicator"></div>
+	  </div>
+     	  
+  </div>
+</div>
+
+  <div class="miaosha w  ">
+   <div class="miaosha-time">
+      <div class="ms_tit">秒杀抢购</div>
+	    <div class="ms_desc">本场距离结束还剩</div>
+		 <div class="countdown clearfix">
+		   <div class="cd_item cd_hour">01</div>
+		   <div class="cd_item cd_minute">39</div>
+		   <div class="cd_item cd_second">40</div>
+           </div>
+		</div>		
+    </div>
+ <div class="miaosha-list">
+   <div class="ms-item">
+    <a href="#" class="ms-item-lk">
+	  <img src="9.jpg" alt=" " class="ms-item-img  ">
+	  <p class="ms-item-name">笔记本电脑</p>
+	   <div class="ms-item-buy">
+	    <span class="progress"><span class="progress-bar"></span></span>
+		<span class="buy-num">已抢30%</span>
+	  </div>
+	  <div class="ms-item-price">
+	    <span class="cm-price new-price">￥549.00</span>
+		 <span class="cm-price origin-price">￥600.00</span>
+	  </div>
+	 </a>
+	 </div>
+	 
+	 <div class="ms-item">
+    <a href="#" class="ms-item-lk">
+	  <img src="9.jpg" alt=" " class="ms-item-img  ">
+	  <p class="ms-item-name">笔记本电脑</p>
+	   <div class="ms-item-buy">
+	    <span class="progress"><span class="progress-bar"></span></span>
+		<span class="buy-num">已抢30%</span>
+	  </div>
+	  <div class="ms-item-price">
+	    <span class="cm-price new-price">￥549.00</span>
+		 <span class="cm-price origin-price">￥600.00</span>
+	  </div>
+	 </a>
+	 </div>
+	 <div class="ms-item">
+    <a href="#" class="ms-item-lk">
+	  <img src="9.jpg" alt=" " class="ms-item-img  ">
+	  <p class="ms-item-name">笔记本电脑</p>
+	   <div class="ms-item-buy">
+	    <span class="progress"><span class="progress-bar"></span></span>
+		<span class="buy-num">已抢30%</span>
+	  </div>
+	  <div class="ms-item-price">
+	    <span class="cm-price new-price">￥549.00</span>
+		 <span class="cm-price origin-price">￥600.00</span>
+	  </div>
+	 </a>
+	 </div>
+	  <div class="ms-item">
+    <a href="#" class="ms-item-lk">
+	  <img src="9.jpg" alt=" " class="ms-item-img  ">
+	  <p class="ms-item-name">笔记本电脑</p>
+	   <div class="ms-item-buy">
+	    <span class="progress"><span class="progress-bar"></span></span>
+		<span class="buy-num">已抢30%</span>
+	  </div>
+	  <div class="ms-item-price">
+	    <span class="cm-price new-price">￥549.00</span>
+		 <span class="cm-price origin-price">￥600.00</span>
+	  </div>
+	 </a>
+	 </div>
+	
+ </div>
+ <div class="footer">
+  <div class="footer_container ">
+    <div class="footer_social">
+      <a href=" ">
+	    <img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAmVBMVEUAAADrXVzqXVzsXVzrXVzrXVzqXFvrXVzrXFzrXFzrXFvsXVztXV3qXVzqXVzrXVzrXVzsXVzqXVzrXVzrXVzrXFvrXVztXl3sXV3sXFvqXFvrXVzrXVzrXVzrXV3rXVzsXl3sXl3sXFvsXVztW1vtXFvrXVzqXFzrXVzqXFvsXVzrXFvtXFvuW1vsXFzsXl3rXV3sWlnqXVwFstRJAAAAMnRSTlMAyfJk6OPTqFxTQTsx+M+bjHf12bCfhE5GFN/BvLeUfVZJLBoMBezEiW1fNyUdCnFrAybGT4MAAAEmSURBVCjPbZLZcoMwDEUvxmwhrAkEsidAs7RJW/3/x9VgA4XxeREzZyxZF2PgM3EMxmzntMCczYEGDHeiyjVNuH2NbvlBczaDIw2FdO+UdMjOe9KyhWBBE5zkbskvE4AxlZ6/REwtvPl3GxY9dqLs+EFZD6ferUvg2nareARqieAol3URHs4LO/IChF1SsNW5MZFgn2FFAgspyYoqDrmR+0KSIzdgCLr6hEfkHEWMD5T9/VPZgH5fFEDuVQ6bc8j/AZNcPzuLQhUKJUPkXb3W9H1i7cnjmGcGXwVZ8PvlbFMO5KRwoYZaF9/0TLdBsetdWgObfkKcPN04pIEEApu0sAaCl1766uXpnAnFRe8U19lca/qwf1aj4skbM7zjbcuYZURuDcUf0IRfo5ZkTFQAAAAASUVORK5CYII=" title="官方微博">
+	  </a>
+	  <a href=" ">
+	    <img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAA6lBMVEUAAABQt3RIvHRQtnVQtnRRtXRPtnRQtnRNuHFPuHVPt3RQtnRPt3NQtnRRtnRPt3RPtnRQtnRPuHVNuHNQtnJKvXJQtnRQtnRRtnNPtnRNvW9OuHZYtnJQtnRQuXJOt3ZNuXNPtnRWs3NPtnNPtnVPuHVOuHZLumpZrYRPt3ROt3NcrHFPuHNOtXJOuXFSs3hLu3ZStXxWsHQ+xXVKu21QuXJMuHJQtnNQt3VOt2k4y3dQt3RQtXUz0E5YrG1eqogu0kgx0ncz0XhDwWJUtXlQtnRRtnRQtnVTtHRRtnVWsXVbq3NTtHdcqoV/VWtCAAAARXRSTlMAOAPg8u/Y0HEM+va1sZV2Zl1PQBoG3cy+p1UqHuXMx8TDv6ugm4JeXVpFNTAlFOrg1LOxlYmHhXt4YGBTUUxLRkM0LhBCU+vDAAABTUlEQVQoz22S5ZrCMBBFb4WiVVp8cZd1d0sF2Pd/naVTo8D5k3ZO5pvvJkEMp9arGTE7eCzjEKPGYqp6Spkltodjd5uJW4gsjeu+R+57ww6x3S8Q+YLNjnA2LZJ9l51C8t083FrP6ZpS2evVAWRpRm0F4iEZccaDI9cBOBMom9ASa2BMsomlM8CvlwWyTiQVyP6yq+VzHPiZqmmKEMke6FNGwM903tpN6q9JVlDwlwxP7lNFwI1LVRRpZo5OY2qhfYf6NfiMt6sWITGyBg+sOOCVQ2MGjCgLZEYUAFjJXQz9QFWMg1zyiyDVRpE7p2FDlANJf24jdG3KqgMSWcJm96YvVSqJecAIJVmv0CtVSiU7TnC1ZSewg+wtl5267AWIt7/jvvUzQj6Yl3bueoKYpWQ7++4y/bBzAtuG7d7Fk4U0VuO2K4ii0FEmeYT8AzRaeyGGpXtyAAAAAElFTkSuQmCC" title="官方公众号">
+	  </a>
+	  <a href=" ">
+	    <img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAz1BMVEUAAAAvpd4wpd0wpd4tpuAxqt4wpd4vpd4wqN0ppuImquUwpN0wpd4vpd8wpd0up98wpt4wpd0vpt0tpN8vqd4speMvpd0opeI0pdgvpt4vpd0rpOEwpd0xpd0wpd0sqeAqquIurOEtqN8upd4nqOUpqOIupOgsouAvoNsqp+E1qdovpd4wpd4vpd0xo90wpdkun9wvpt0vpd4imukgwewyouEemOwdme0to9wmqOQ5stwwpd0xpdwzpdsxpNwwpdwvpN03qtczp90yotw4mNeIn8/UAAAAO3RSTlMA8t/YTzfuz1wMBujiy8rEsKGSgHlCPSj++vbyvLWrlXBhVkUxGxTg1MPBp6aZmI6Jd2lgUUtDNC8hH6zWnXoAAAEaSURBVCjPbZLneoJQDIY/tgqyRKh71u69e8DR9v6vqQ+eEHq07y+SN0DyJGCsh2vf1pxx0sUh5lAwfkNRpyPxl+IiA2Npa6HaE7Nyb7tcHJB/vUrX7LOr2e4+UXJJTmVjlG6x5YRxEwe1LXt2OIzL2kcOPcDiYIQ999y5iQ7LdylbPbLFBCEXriDRKbMO4FX/b4O4E4SOXjV2XMmu2MiUDY1etFeocGjwPgySCTsewEVITxlqPOqCR7kaf9AoYeTKVISU17SkPQxyarEBGCQ7IDIpi0ETMKmwbabzoTNLFxF9aVpWnhfiP2x5QCyVZVvY8/xzfCbFE4gXcXRgMzBLQ3Vn6mFPdfFdrcpNWlBpzSeBrmm6f9togvgFmINuYDwpQKQAAAAASUVORK5CYII=" title="客服QQ">
+	  </a>
+	 </div>
+   </div>
+ </div>
+ 
+ 
+ 
+ 
+ 
+
+		  
+		
+		
+	
+<script>
+    var searchInput=document.getElementById("searchInput");
+	searchInput.addEventListener("keyup",showKerword,false);//监听事件当某键被按键触发事件
+	searchInput.addEventListener("blur",hideKerword,false);//失去焦点时触发
+	searchInput.addEventListener("focus",showKerword,false);//获取焦点时触发
+	function showKerword(){
+	if(searchInput.value !=="")
+	{//值不为空的时候才显示出来
+	document.getElementById("search-suggest").style.display="block";
+	}
+	}
+	function hideKerword(){
+	document.getElementById("search-suggest").style.display="none";//失去焦点时触发
+	}
+	 bannerOption();
+	function bannerOption(){
+	var swiper=document.getElementById("swiper");
+	var swiperItem=swiper.getElementsByClassName("swiper-item");//获取轮播图列表
+	var prev=document.getElementsByClassName("prev")[0];//获取上一张按钮
+	var next=document.getElementsByClassName("next")[0];
+	var index=0;
+	var timer=null;
+	var indicators=document.getElementsByClassName("indicator");
+	for(var i=0;i<swiperItem.length;i++)
+	{
+	    if(index==i)
+		{
+		  swiperItem[i].style.opacity=1;
+		  }
+		  else {
+		  swiperItem[i].style.opacity=0;
+		  }
+		  swiperItem[i].style.transform="translateX("+(-i*swiperItem[0].offsetWidth)+"px";
+		  
+	 }
+	 prev.onclick=function(){
+	 	 index--;
+		 changeImg();
+	   clearInterval(timer);
+	 }
+	 next.onclick=function(){	 
+	 index++;
+	 clearInterval(timer);
+	 changeImg();	 
+	}
+	swiper.addEventListener("mouseover",function(){
+	  clearInterval(timer);//鼠标移动到图片停止播放
+	},false);
+	swiper.addEventListener("mouseout",function(){
+	 atuoChange();//鼠标移出图片自动播放
+	},false);
+	
+	//设置原点
+	function setIndicatoron(){
+	for(var i=0;i<indicators.length;i++)
+	{
+	  indicators[i].classList.remove("on");
+	  }
+	  indicators[index].classList.add("on");
+	  }
+	//更换图片
+	
+	function changeImg(){
+	if(index<0)
+	{
+	  index=swiperItem.length-1;//swiperItem为3
+	  }
+	  else if(index>swiperItem.length-1)
+	  {
+	  index=0;
+	  }
+	for(var j=0;j<swiperItem.length;j++)
+	{
+	  swiperItem[j].style.opacity=0;//全部不显示 完全透明
+	  }
+	   swiperItem[index].style.opacity=1;//当前显示
+	  setIndicatoron();
+	   
+	 }
+	 atuoChange();
+	 //自动播放
+	   function atuoChange(){
+	   timer=setInterval(function(){
+	   index++;
+	   changeImg();
+	   },4000);
+	 }
+	  };
+	  //秒杀倒计时
+	  var ms_time=7200;//两小时
+	  var ms_timer=setInterval(function(){
+	  if(ms_time<0)
+	  {
+	    clearInterval(ms_timer); 
+	  }
+	  else{
+	  
+	  claTime(ms_time);
+	  ms_time--;
+	  }
+	  },1000);
+	  function claTime(ms_time){
+	  var hour=Math.floor(ms_time/60/60);//小时
+	  var minutes=Math.floor(ms_time/60%60);//分钟
+	  var seconds=Math.floor(ms_time%60);//秒
+	  var hour=fo(hour);//调用
+	  document.getElementsByClassName("cd_hour")[0].innerHTML=hour;
+	  document.getElementsByClassName("cd_minute")[0].innerHTML=minutes;
+	  document.getElementsByClassName("cd_second")[0].innerHTML=seconds;
+	  }
+	  function fo(t)
+	  {
+	   if(t<10)
+	   {
+	    t="0"+t;
+		}
+		return t;
+		}
+</script>
+<script src="js/index.js"></script>
+</body>
+</html>
